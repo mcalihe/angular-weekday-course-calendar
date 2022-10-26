@@ -1,0 +1,72 @@
+<div class="calendar ">
+
+  <div class="calendar-grid-base">
+    <div class="header">
+
+      <div class="header-items" style="grid-template-columns: repeat({{this.disableSunday ? 6 : 7}},minmax(0,1fr));">
+        <div class="header-item" *ngFor="let gridItem of calendarDataBuilder.getCalendarGrid().header">
+          {{gridItem.displayContent ? gridItem.content : ''}}
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="times">
+      <div class="times-items">
+        <div class="time-item" *ngFor="let gridItem of calendarDataBuilder.getCalendarGrid().times">
+          {{gridItem.displayContent ? gridItem.content : ''}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="spacers">
+      <div class="spacer-columns" style="grid-template-columns: repeat({{this.disableSunday ? 6 : 7}},minmax(0,1fr));">
+        <div class="spacer-column"  *ngFor="let spacer of calendarDataBuilder.getCalendarGrid().spacers">
+          <div class="spacer-row"  *ngFor="let gridItem of spacer">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--    <div class="five-minutes">-->
+    <!--      <div class="five-minutes-grid" style="grid-template-columns: repeat({{this.disableSunday ? 6 : 7}},minmax(0,1fr));">-->
+    <!--        <div class="five-minutes-column" *ngFor="let spacer of calendarDataBuilder.getCalendarGrid().spacers">-->
+    <!--          <div class="five-minutes-row" *ngFor="let minutes of [].constructor(12 * spacer.length);">-->
+
+    <!--          </div>-->
+
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <div class="courses">
+      <div class="courses-grid" style="grid-template-columns: repeat({{this.disableSunday ? 6 : 7}},minmax(0,1fr));">
+        <div class="courses-column" style="grid-template-rows: repeat({{12 * spacer.length}},{{fiveMinutesHeight}});" *ngFor="let spacer of calendarDataBuilder.getCalendarGrid().spacers; let index = index">
+
+
+          <div class="course-item" style="grid-row: {{courseGridItem.gridrowStart}}/{{courseGridItem.gridrowEnd}}" *ngFor="let courseGridItem of getCoursesForWochentag(index)">
+            <div class="course">
+              <ng-container
+                *ngTemplateOutlet="courseTemplate ?? defaultCourseTemplate; context: { $implicit: courseGridItem }">
+              </ng-container>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<ng-template #defaultCourseTemplate let-courseGridItem>
+  <div>{{courseGridItem.standort}}</div>
+  <div>{{courseGridItem.course.Name}}</div>
+  <div>{{courseGridItem.course.HourFrom + ':' + courseGridItem.course.MinuteFrom}}</div>
+</ng-template>

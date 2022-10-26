@@ -1,0 +1,147 @@
+$hour-height: 40px;
+$five-minute-height: $hour-height/12;
+$cell-margin: 2px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.calendar-grid-base {
+  min-width: 700px;
+  display: grid;
+  grid-template-areas: ". header" "times main";
+  grid-template-rows: 30px auto;
+  grid-template-columns: 60px auto;
+
+  .header {
+    //background-color: red;
+    grid-area: header;
+
+    .header-items {
+      display: grid;
+      text-align: center;
+
+      .header-item {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 0 8px;
+        font-size: 1rem;
+      }
+    }
+
+  }
+
+  .times {
+    grid-area: times;
+    //background-color: blue;
+
+    .times-items {
+      display: grid;
+
+      .time-item {
+        height: $hour-height;
+      }
+    }
+
+  }
+
+  .spacers {
+    grid-area: main;
+
+    .spacer-columns {
+      display: grid;
+
+      .spacer-column {
+        display: grid;
+        margin-right: $cell-margin;
+
+        &:first-child {
+          margin-left: $cell-margin;
+        }
+
+        .spacer-row {
+
+          margin-bottom: 2px;
+          background-color: #ccccccaa;
+          border-radius: 3px;
+          height: $hour-height - $cell-margin;
+
+          &:first-child {
+            margin-top: $cell-margin;
+            height: $hour-height - 2*$cell-margin;
+          }
+
+        }
+      }
+    }
+
+  }
+
+  .five-minutes {
+    grid-area: main;
+
+    .five-minutes-grid {
+      display: grid;
+
+      .five-minutes-column {
+        display: grid;
+
+        .five-minutes-row {
+          height: $five-minute-height;
+        }
+      }
+    }
+  }
+
+  .courses {
+    grid-area: main;
+
+    .courses-grid {
+      display: grid;
+      grid-auto-flow: column;
+
+      .courses-column {
+        display: grid;
+        margin-right: 3px;
+
+        &:first-child {
+          margin-left: 3px;
+        }
+
+        .course-item {
+          border-radius: 3px;
+          background-color: #47d0fa;
+          display: flex;
+          max-width: 100%;
+          overflow: hidden;
+
+          &:hover {
+            transition: all linear 0.2s;
+            transform: scale(1.05);
+          }
+
+          .course {
+            flex: 1;
+            font-size: 0.65rem;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+          }
+
+        }
+      }
+    }
+  }
+}

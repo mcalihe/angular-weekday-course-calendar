@@ -44,6 +44,8 @@ export class AngularWeekdayCourseCalendarComponent implements OnInit {
   ngOnInit(): void {
     let startAndEndHour = this.courseContainer ? this.getStartAndEndHour(this.courseContainer) : [this.emptyStart ?? 7,this.emptyEnd ?? 20];
 
+    console.log(startAndEndHour)
+
     this.calendarDataBuilder = new CalendarDataBuilder(startAndEndHour[0], startAndEndHour[1], this.disableSunday);
 
 

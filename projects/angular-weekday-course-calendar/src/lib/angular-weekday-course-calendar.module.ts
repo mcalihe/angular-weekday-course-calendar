@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AngularWeekdayCourseCalendarComponent } from './angular-weekday-course-calendar.component';
-import {NgTemplateOutlet} from "@angular/common";
+import {NgForOf, NgTemplateOutlet} from "@angular/common";
 
 
 
@@ -9,7 +9,8 @@ import {NgTemplateOutlet} from "@angular/common";
     AngularWeekdayCourseCalendarComponent
   ],
   imports: [
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NgForOf
   ],
   exports: [
     AngularWeekdayCourseCalendarComponent

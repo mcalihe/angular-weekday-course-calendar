@@ -67,14 +67,16 @@ export class CourseLocation {
   Standort: string;
   Preis: number;
   PreisWeste: number;
+  Eintritt: string;
   Courses: Course[];
 
 
-  constructor(Standort: string, Preis: number, PreisWeste: number, Courses: Course[]) {
+  constructor(Standort: string, Preis: number, PreisWeste: number, Courses: Course[], Eintritt: string) {
     this.Standort = Standort;
     this.Preis = Preis;
     this.PreisWeste = PreisWeste;
     this.Courses = Courses;
+    this.Eintritt = Eintritt;
   }
 }
 

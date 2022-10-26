@@ -1,12 +1,17 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {
-  CalendarDataBuilder,
+  CalendarDataBuilder, Course,
   CourseGridItem,
   CoursesContainer,
   GridItemType,
   GridRowPosition,
   Wochentage
 } from './CalendarDataBuilder';
+
+export interface CourseItem {
+  location: string,
+  course: Course
+}
 
 @Component({
   selector: 'angular-weekday-course-calendar',
@@ -17,7 +22,7 @@ export class AngularWeekdayCourseCalendarComponent implements OnInit {
 
   elementHeight: any;
 
-  @Input() onCourseClick: (course: CourseGridItem) => void = () => {};
+  @Input() onCourseClick: (course: CourseItem) => void = () => {};
 
   @Input()
   emptyStart?: number;

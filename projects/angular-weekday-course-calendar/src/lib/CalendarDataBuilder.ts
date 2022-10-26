@@ -1,5 +1,3 @@
-import {Input} from "@angular/core";
-
 export enum Wochentage {
   Montag = 0,
   Dienstag = 1,
@@ -65,7 +63,7 @@ export class CoursesContainer {
   }
 }
 
-class CourseLocation {
+export class CourseLocation {
   Standort: string;
   Preis: number;
   PreisWeste: number;
@@ -80,7 +78,7 @@ class CourseLocation {
   }
 }
 
-class Course {
+export class Course {
   Name: string;
   Day: string;
   HourFrom: number;

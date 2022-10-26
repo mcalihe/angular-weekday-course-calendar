@@ -48,7 +48,7 @@
 
 
           <div class="course-item" style="grid-row: {{courseGridItem.gridrowStart}}/{{courseGridItem.gridrowEnd}}" *ngFor="let courseGridItem of getCoursesForWochentag(index)">
-            <div class="course">
+            <div class="course" (click)="onCourseClick(courseGridItem)">
               <ng-container
                 *ngTemplateOutlet="courseTemplate ?? defaultCourseTemplate; context: { $implicit: courseGridItem }">
               </ng-container>

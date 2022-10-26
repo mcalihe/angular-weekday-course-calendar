@@ -17,6 +17,8 @@ export class AngularWeekdayCourseCalendarComponent implements OnInit {
 
   elementHeight: any;
 
+  @Input() onCourseClick: (course: CourseGridItem) => void = () => {};
+
   @Input()
   emptyStart?: number;
 
